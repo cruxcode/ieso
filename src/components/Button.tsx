@@ -2,11 +2,21 @@ import React from "react";
 
 export interface ButtonProps {
 	style: React.CSSProperties;
+	onClick?: (event: any) => void;
 }
 
 export const Button: React.FC<ButtonProps> = (props) => {
 	return (
-		<button style={{ ...ButtonStyles, ...props.style }}>
+		<button
+			style={{ ...ButtonStyles, ...props.style }}
+			onClick={(event: any) => {
+				console.log("onclinc");
+				if (props.onClick) {
+					console.log("u");
+					props.onClick(event);
+				}
+			}}
+		>
 			{props.children}
 		</button>
 	);

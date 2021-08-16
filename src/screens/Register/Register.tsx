@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
+import { register } from "../../api/user";
 import { Button } from "../../components/Button";
 
 export interface RegisterProps {}
 
 export const Register: React.FC<RegisterProps> = (props) => {
+	const username = useRef<HTMLInputElement>(null);
+	const password = useRef<HTMLInputElement>(null);
+	const registerHandler = useCallback(
+		(event: any) => {
+			if (username.current && password.current) {
+				const name = username.current.value;
+				const pass = password.current.value;
+				register(name, pass).then((resp: any) => {
+					localStorage.setItem(
+						"payload",
+						JSON.stringify(resp.payload)
+					);
+					localStorage.setItem("token", resp.token);
+					window.location.href = "http://localhost:3000";
+				});
+			}
+		},
+		[username, password]
+	);
 	return (
 		<div
 			style={{
@@ -43,6 +63,7 @@ export const Register: React.FC<RegisterProps> = (props) => {
 				<input
 					style={{ display: "block", width: "100%" }}
 					id="username"
+					ref={username}
 				></input>
 				<br />
 				<label htmlFor="password">Password</label>
@@ -50,9 +71,12 @@ export const Register: React.FC<RegisterProps> = (props) => {
 					style={{ display: "block", width: "100%" }}
 					type="password"
 					id="password"
+					ref={password}
 				></input>
 				<br />
-				<Button style={{}}>Register</Button>
+				<Button style={{}} onClick={registerHandler}>
+					Register
+				</Button>
 			</div>
 		</div>
 	);
