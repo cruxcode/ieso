@@ -32,7 +32,7 @@ export const Base: React.FC<BaseProps> = (props) => {
 									marginRight: "1rem",
 								}}
 							>
-								<Link to="/login">Sign In</Link>
+								<a href="/login">Sign In</a>
 							</Button>
 							<Button
 								style={{
