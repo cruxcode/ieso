@@ -297,8 +297,8 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 			 * auto generate code
 			 * this code is generated to take care of response
 			 */}
-			<CreatePostSuccessComponent />
-			<CreatePostFailureComponent />
+			{/* <CreatePostSuccessComponent /> */}
+			{/* <CreatePostFailureComponent /> */}
 		</div>
 	);
 };
