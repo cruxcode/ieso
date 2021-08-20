@@ -159,113 +159,180 @@
 			"children": [
 				{
 					"id": "text_1",
-					"value": "Submit Posting",
-					"view_type": "TextBox"
+					"value": "Submit a Posting",
+					"view_type": "TextBox",
+					"style": {
+						"fontWeight": "bold",
+						"fontSize": "2rem",
+						"fontFamily": "Spectral",
+						"paddingTop": "1rem"
+					}
 				},
 				{
 					"id": "text_2",
 					"value": "In your posting, you will be asked to share a self evaluation of your emotions. First, you will be asked to describe your emotions, and then you will be asked to evaluate them by ranking a set of chosen emotions from 1 to 10. After describing your emotions, you will be asked to describe any potential events or topics relating to your emotions. Please recall that you are free to make postings at any time as part of this study.",
-					"view_type": "TextBox"
+					"view_type": "TextBox",
+					"style": {
+						"fontFamily": "Spectral",
+						"paddingTop": "1rem",
+						"paddingBottom": "1rem"
+					}
 				},
 				{
 					"id": "textbox_1",
-					"label": "How are you feeling?",
+					"label": "How are you feeling? *",
 					"view_type": "TextArea",
-					"dest": [{ "data_model": "posts", "field": "feeling" }]
+					"dest": [{ "data_model": "posts", "field": "feeling" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "text_3",
 					"value": "Emotional Rankings",
-					"view_type": "TextBox"
+					"view_type": "TextBox",
+					"style": {
+						"fontFamily": "Spectral",
+						"paddingTop": "1rem",
+						"paddingBottom": "1rem",
+						"fontWeight": "bold",
+						"fontSize": "2rem"
+					}
 				},
 				{
 					"id": "text_4",
 					"value": "How much are you feeling each of the following emotions right now, from 1 (low) to 10 (high)?",
-					"view_type": "TextBox"
+					"view_type": "TextBox",
+					"style": {
+						"fontFamily": "Spectral",
+						"paddingBottom": "1rem"
+					}
 				},
 				{
 					"id": "range_selector_1",
 					"label": "angry *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "angry" }]
+					"dest": [{ "data_model": "posts", "field": "angry" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_2",
 					"label": "sad *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "sad" }]
+					"dest": [{ "data_model": "posts", "field": "sad" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_3",
 					"label": "stressed *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "stressed" }]
+					"dest": [{ "data_model": "posts", "field": "stressed" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_4",
 					"label": "happy *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "happy" }]
+					"dest": [{ "data_model": "posts", "field": "happy" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_5",
 					"label": "lonely *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "lonely" }]
+					"dest": [{ "data_model": "posts", "field": "lonely" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_6",
 					"label": "calm *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "calm" }]
+					"dest": [{ "data_model": "posts", "field": "calm" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_7",
 					"label": "excited *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "excited" }]
+					"dest": [{ "data_model": "posts", "field": "excited" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_8",
 					"label": "annoyed *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "annoyed" }]
+					"dest": [{ "data_model": "posts", "field": "annoyed" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_9",
 					"label": "hopeful *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "hopeful" }]
+					"dest": [{ "data_model": "posts", "field": "hopeful" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_10",
 					"label": "despaired *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "despaired" }]
+					"dest": [{ "data_model": "posts", "field": "despaired" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_11",
 					"label": "guilty *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "guilty" }]
+					"dest": [{ "data_model": "posts", "field": "guilty" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_12",
 					"label": "afraid *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "afraid" }]
+					"dest": [{ "data_model": "posts", "field": "afraid" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_13",
 					"label": "disgusted *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "disgusted" }]
+					"dest": [{ "data_model": "posts", "field": "disgusted" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "range_selector_14",
 					"label": "surprised *",
 					"view_type": "RangeSelector",
-					"dest": [{ "data_model": "posts", "field": "surprised" }]
+					"dest": [{ "data_model": "posts", "field": "surprised" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "radio_1",
@@ -288,13 +355,19 @@
 						}
 					],
 					"data_type": "string",
-					"view_type": "Radio"
+					"view_type": "Radio",
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "textbox_2",
 					"label": "How would you describe what happened? *",
 					"view_type": "EditTextBox",
-					"dest": [{ "data_model": "posts", "field": "incident" }]
+					"dest": [{ "data_model": "posts", "field": "incident" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "radio_2",
@@ -352,7 +425,10 @@
 						}
 					],
 					"view_type": "Radio",
-					"dest": [{ "data_model": "posts", "field": "when" }]
+					"dest": [{ "data_model": "posts", "field": "when" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "radio_3",
@@ -380,7 +456,10 @@
 						}
 					],
 					"view_type": "Radio",
-					"dest": [{ "data_model": "posts", "field": "visibility" }]
+					"dest": [{ "data_model": "posts", "field": "visibility" }],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "text_5",
@@ -434,13 +513,19 @@
 								}
 							]
 						}
-					]
+					],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "textbox_3",
 					"view_type": "EditTextBox",
 					"dest": [{ "data_model": "posts", "field": "other_issue" }],
-					"properties": { "hide": "hide_other_issue" }
+					"properties": { "hide": "hide_other_issue" },
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				},
 				{
 					"id": "button_1",
@@ -454,7 +539,10 @@
 								"loggedin"
 							]
 						}
-					]
+					],
+					"labelStyle": {
+						"fontFamily": "Spectral"
+					}
 				}
 			],
 			"vars": [

@@ -4,6 +4,7 @@ export interface TextAreaProps {
 	id: string;
 	label: string;
 	value: string;
+	labelStyle?: React.CSSProperties;
 	style?: React.CSSProperties;
 	handlers?: any;
 }
@@ -11,7 +12,12 @@ export interface TextAreaProps {
 export const TextArea: React.FC<TextAreaProps> = (props) => {
 	return (
 		<div>
-			<label htmlFor={props.id}>{props.label}</label>
+			<label
+				htmlFor={props.id}
+				style={{ textAlign: "left", ...props.labelStyle }}
+			>
+				{props.label}
+			</label>
 			<textarea
 				rows={4}
 				style={{

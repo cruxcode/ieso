@@ -35,6 +35,7 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 							id={child.id}
 							value={child.value}
 							key={child.id}
+							style={child.style}
 						/>,
 					]);
 				}
@@ -60,6 +61,8 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 									});
 								},
 							}}
+							style={child.style}
+							labelStyle={child.labelStyle}
 						/>,
 					]);
 				}
@@ -85,6 +88,8 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 									});
 								},
 							}}
+							style={child.style}
+							labelStyle={child.labelStyle}
 						/>,
 					]);
 				}

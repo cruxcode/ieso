@@ -5,6 +5,7 @@ export interface RangeInputProps {
 	label: string;
 	value: number;
 	handlers?: any;
+	labelStyle?: React.CSSProperties;
 	style?: React.CSSProperties;
 	min?: number;
 	max?: number;
@@ -13,7 +14,12 @@ export interface RangeInputProps {
 export const RangeInput: React.FC<RangeInputProps> = (props) => {
 	return (
 		<div>
-			<label htmlFor={props.id}>{props.label}</label>
+			<label
+				htmlFor={props.id}
+				style={{ textAlign: "left", ...props.labelStyle }}
+			>
+				{props.label}
+			</label>
 			<input
 				type="range"
 				style={{

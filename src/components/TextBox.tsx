@@ -8,5 +8,7 @@ export interface TextBoxProps {
 }
 
 export const TextBox: React.FC<TextBoxProps> = (props) => {
-	return <div>{props.value}</div>;
+	return (
+		<div style={{ textAlign: "left", ...props.style }}>{props.value}</div>
+	);
 };
