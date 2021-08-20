@@ -333,7 +333,7 @@ interface CreatePostEvent {
  * auto generated code
  * check if it satisfies schema for backend
  */
-function satisfiesCreatePostEvent(createPostEvent: any) {}
+// function satisfiesCreatePostEvent(createPostEvent: any) {}
 
 /**
  *

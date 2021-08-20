@@ -7,7 +7,7 @@ export const usernameExists = (username: string) => {
 		headers: headers,
 	};
 	return new Promise((res, rej) => {
-		fetch("http://localhost:4000" + "/user-exists", options)
+		fetch("http://localhost:4000/user-exists", options)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
@@ -25,7 +25,7 @@ export const register = (username: string, password: string) => {
 		headers: headers,
 	};
 	return new Promise((res, rej) => {
-		fetch("http://localhost:4000" + "/register", options)
+		fetch("http://localhost:4000/register", options)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
@@ -43,7 +43,7 @@ export const login = (username: string, password: string) => {
 		headers: headers,
 	};
 	return new Promise((res, rej) => {
-		fetch("http://localhost:4000" + "/login", options)
+		fetch("http://localhost:4000/login", options)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
