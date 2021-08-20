@@ -170,7 +170,7 @@
 				{
 					"id": "textbox_1",
 					"label": "How are you feeling?",
-					"view_type": "EditTextBox",
+					"view_type": "TextArea",
 					"dest": [{ "data_model": "posts", "field": "feeling" }]
 				},
 				{
@@ -256,13 +256,13 @@
 					"dest": [{ "data_model": "posts", "field": "afraid" }]
 				},
 				{
-					"id": "range_selector_4",
+					"id": "range_selector_13",
 					"label": "disgusted *",
 					"view_type": "RangeSelector",
 					"dest": [{ "data_model": "posts", "field": "disgusted" }]
 				},
 				{
-					"id": "range_selector_5",
+					"id": "range_selector_14",
 					"label": "surprised *",
 					"view_type": "RangeSelector",
 					"dest": [{ "data_model": "posts", "field": "surprised" }]
