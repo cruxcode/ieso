@@ -104,7 +104,7 @@
 						"enums": {
 							"data_type": "string",
 							"options": [
-								"COVID_19",
+								"COVID 19",
 								"Black Lives Matter",
 								"Other"
 							]
@@ -215,7 +215,10 @@
 					"dest": [{ "data_model": "posts", "field": "angry" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_2",
@@ -224,7 +227,10 @@
 					"dest": [{ "data_model": "posts", "field": "sad" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_3",
@@ -233,7 +239,10 @@
 					"dest": [{ "data_model": "posts", "field": "stressed" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_4",
@@ -242,7 +251,10 @@
 					"dest": [{ "data_model": "posts", "field": "happy" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_5",
@@ -251,7 +263,10 @@
 					"dest": [{ "data_model": "posts", "field": "lonely" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_6",
@@ -260,7 +275,10 @@
 					"dest": [{ "data_model": "posts", "field": "calm" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_7",
@@ -269,7 +287,10 @@
 					"dest": [{ "data_model": "posts", "field": "excited" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_8",
@@ -278,7 +299,10 @@
 					"dest": [{ "data_model": "posts", "field": "annoyed" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_9",
@@ -287,7 +311,10 @@
 					"dest": [{ "data_model": "posts", "field": "hopeful" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_10",
@@ -296,7 +323,10 @@
 					"dest": [{ "data_model": "posts", "field": "despaired" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_11",
@@ -305,7 +335,10 @@
 					"dest": [{ "data_model": "posts", "field": "guilty" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_12",
@@ -314,7 +347,10 @@
 					"dest": [{ "data_model": "posts", "field": "afraid" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_13",
@@ -323,7 +359,10 @@
 					"dest": [{ "data_model": "posts", "field": "disgusted" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
-					}
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
 				},
 				{
 					"id": "range_selector_14",
@@ -332,17 +371,23 @@
 					"dest": [{ "data_model": "posts", "field": "surprised" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
+					},
+					"min": 0,
+					"max": 10,
+					"value": 0
+				},
+				{
+					"id": "text_6",
+					"value": "Are you feeling this way because of specific event? *",
+					"view_type": "TextBox",
+					"style": {
+						"fontFamily": "Spectral",
+						"paddingTop": "1rem"
 					}
 				},
 				{
 					"id": "radio_1",
-					"label": "Are you feeling this way because of specific event? *",
 					"options": [
-						{
-							"id": "radio_option_1",
-							"label": "Yes",
-							"value": "yes"
-						},
 						{
 							"id": "radio_option_1",
 							"label": "Yes",
@@ -355,9 +400,12 @@
 						}
 					],
 					"data_type": "string",
-					"view_type": "Radio",
+					"view_type": "RadioGroup",
 					"labelStyle": {
 						"fontFamily": "Spectral"
+					},
+					"itemStyle": {
+						"display": "block"
 					}
 				},
 				{
@@ -370,11 +418,21 @@
 					}
 				},
 				{
+					"id": "text_7",
+					"value": "When did this happen? *",
+					"view_type": "TextBox",
+					"style": {
+						"fontFamily": "Spectral",
+						"paddingTop": "1rem"
+					}
+				},
+				{
 					"id": "radio_2",
-					"label": "When did this happen? *",
 					"options": [
 						{
 							"label": "within the last hour",
+							"id": "radio_2_option_1",
+							"value": "within the last hour",
 							"src": [
 								{
 									"data_model": "posts",
@@ -385,6 +443,8 @@
 						},
 						{
 							"label": "within the last day",
+							"value": "within the last day",
+							"id": "radio_2_option_2",
 							"src": [
 								{
 									"data_model": "posts",
@@ -395,6 +455,8 @@
 						},
 						{
 							"label": "within the last week",
+							"value": "within the last week",
+							"id": "radio_2_option_3",
 							"src": [
 								{
 									"data_model": "posts",
@@ -405,6 +467,8 @@
 						},
 						{
 							"label": "within the last week",
+							"value": "within the last week",
+							"id": "radio_2_option_4",
 							"src": [
 								{
 									"data_model": "posts",
@@ -415,6 +479,8 @@
 						},
 						{
 							"label": "other",
+							"id": "radio_2_option_5",
+							"value": "other",
 							"src": [
 								{
 									"data_model": "posts",
@@ -424,18 +490,28 @@
 							]
 						}
 					],
-					"view_type": "Radio",
+					"view_type": "RadioGroup",
 					"dest": [{ "data_model": "posts", "field": "when" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
 					}
 				},
 				{
+					"id": "text_8",
+					"value": "Would you like this post to be public? *",
+					"view_type": "TextBox",
+					"style": {
+						"fontFamily": "Spectral",
+						"paddingTop": "1rem"
+					}
+				},
+				{
 					"id": "radio_3",
-					"label": "Would you like this post to be public? *",
 					"options": [
 						{
 							"label": "public",
+							"id": "radio_3_option_1",
+							"value": "public",
 							"src": [
 								{
 									"data_model": "posts",
@@ -445,7 +521,9 @@
 							]
 						},
 						{
-							"label": "public",
+							"label": "private",
+							"id": "radio_3_option_2",
+							"value": "private",
 							"src": [
 								{
 									"data_model": "posts",
@@ -455,7 +533,7 @@
 							]
 						}
 					],
-					"view_type": "Radio",
+					"view_type": "RadioGroup",
 					"dest": [{ "data_model": "posts", "field": "visibility" }],
 					"labelStyle": {
 						"fontFamily": "Spectral"
@@ -464,14 +542,28 @@
 				{
 					"id": "text_5",
 					"value": "If your post is public, you may receive replies from other users.",
-					"view_type": "TextBox"
+					"view_type": "TextBox",
+					"style": {
+						"fontFamily": "Spectral",
+						"paddingTop": "0.5rem"
+					}
+				},
+				{
+					"id": "text_9",
+					"value": "Is this related to COVID 19 or issues relevant to Black Lives Matter? *",
+					"view_type": "TextBox",
+					"style": {
+						"fontFamily": "Spectral",
+						"paddingTop": "1rem"
+					}
 				},
 				{
 					"id": "radio_4",
-					"label": "Is this related to COVID_19 or issues relevant to Black Lives Matter? *",
 					"options": [
 						{
-							"label": "COVID_19",
+							"label": "COVID 19",
+							"value": "COVID 19",
+							"id": "radio_4_option_1",
 							"src": [
 								{
 									"data_model": "posts",
@@ -482,6 +574,8 @@
 						},
 						{
 							"label": "Black Lives Matter",
+							"value": "Black Lives Matter",
+							"id": "radio_4_option_2",
 							"src": [
 								{
 									"data_model": "posts",
@@ -492,6 +586,8 @@
 						},
 						{
 							"label": "Other",
+							"value": "Other",
+							"id": "radio_4_option_3",
 							"src": [
 								{
 									"data_model": "posts",
@@ -504,7 +600,7 @@
 					"dest": [
 						{ "data_model": "posts", "field": "related_issue" }
 					],
-					"view_type": "Radio",
+					"view_type": "RadioGroup",
 					"triggers": [
 						{
 							"select": [
