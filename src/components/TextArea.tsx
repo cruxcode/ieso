@@ -27,7 +27,7 @@ export const TextArea: React.FC<TextAreaProps> = (props) => {
 					resize: "none",
 					...props.style,
 				}}
-				value={props.value}
+				defaultValue={props.value}
 				{...props.handlers}
 			/>
 		</div>

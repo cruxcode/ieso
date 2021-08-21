@@ -31,7 +31,7 @@ export const RangeInput: React.FC<RangeInputProps> = (props) => {
 				}}
 				min={props.min || 0}
 				max={props.max || 10}
-				value={props.value}
+				defaultValue={props.value}
 				{...props.handlers}
 			></input>
 		</div>
