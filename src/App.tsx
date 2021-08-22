@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Base } from "./screens/Base/Base";
 import { Register } from "./screens/Register/Register";
 import { Login } from "./screens/Login/Login";
-import { CreatePost } from "./screens/CreatePost2/CreatePost2";
 
 function App() {
 	return (
