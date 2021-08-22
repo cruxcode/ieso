@@ -19,6 +19,7 @@ export const TextArea: React.FC<TextAreaProps> = (props) => {
 				{props.label}
 			</label>
 			<textarea
+				id={props.id}
 				rows={4}
 				style={{
 					display: "block",
