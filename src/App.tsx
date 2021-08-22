@@ -17,9 +17,6 @@ function App() {
 					<Route path="/login">
 						<Login />
 					</Route>
-					<Route path="/post">
-						<CreatePost />
-					</Route>
 					<Route path="/">
 						<Base />
 					</Route>
