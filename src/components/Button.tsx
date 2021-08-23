@@ -10,9 +10,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
 		<button
 			style={{ ...ButtonStyles, ...props.style }}
 			onClick={(event: any) => {
-				console.log("onclinc");
 				if (props.onClick) {
-					console.log("u");
 					props.onClick(event);
 				}
 			}}

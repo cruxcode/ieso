@@ -626,16 +626,6 @@
 				{
 					"id": "button_1",
 					"view_type": "Button",
-					"actions": [
-						{
-							"action_type": "create",
-							"allowed_spaces": [
-								"admins",
-								"moderators",
-								"loggedin"
-							]
-						}
-					],
 					"labelStyle": {
 						"fontFamily": "Spectral"
 					}
