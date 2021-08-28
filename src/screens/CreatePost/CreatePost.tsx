@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { CreatePostEvent, dispatchCreatePostEvent } from "../../api/posts";
 import { Button } from "../../components/Button";
 import { RadioGroup } from "../../components/RadioGroup";
 import { RangeInput } from "../../components/RangeInput";
@@ -50,6 +51,8 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 	const [visibility, setVisibility] = useState<string>("");
 	const [cause, setCause] = useState<string>("");
 	const [detailedCause, setDetailedCause] = useState<string>("");
+	const [disableButton, setDisableButton] = useState<boolean>(false);
+	const [msg, setMsg] = useState<string>("");
 	/**
 	 * auto generated code
 	 * below code is generated when this template was created
@@ -468,12 +471,36 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 			) : null}
 			<Button
 				onClick={() => {
+					if (disableButton) {
+						return;
+					}
 					console.log(createPostEvent);
+					if (createPostEvent) {
+						setDisableButton(true);
+						dispatchCreatePostEvent(createPostEvent)
+							?.then((resp: any) => {
+								console.log(resp);
+								setDisableButton(false);
+								if (resp.success) {
+									setMsg(
+										"Your post has been submitted for approval."
+									);
+								} else {
+									setMsg("Your post cannot be submitted.");
+								}
+							})
+							.catch((err) => {
+								console.log(err);
+								setDisableButton(false);
+								setMsg("Please try again later.");
+							});
+					}
 				}}
 				style={{ marginTop: "1rem", marginBottom: "1rem" }}
 			>
 				Send Post
 			</Button>
+			{<span style={{ marginLeft: "1rem" }}>{msg}</span>}
 			{/**
 			 * auto generate code
 			 * this code is generated to take care of response
@@ -483,30 +510,3 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 		</div>
 	);
 };
-
-/**
- * auto generated code for both backend and frontend
- */
-export interface CreatePostEvent {
-	feeling: string;
-	angry: number;
-	sad: number;
-	stressed: number;
-	happy: number;
-	lonely: number;
-	calm: number;
-	excited: number;
-	anxious: number;
-	annoyed: number;
-	hopeful: number;
-	despaired: number;
-	guilty: number;
-	afraid: number;
-	disgusted: number;
-	surprised: number;
-	isSpecific: string;
-	visibility: string;
-	when: string;
-	cause: string;
-	detailed_cause: string;
-}
