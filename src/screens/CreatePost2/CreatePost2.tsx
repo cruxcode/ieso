@@ -1,9 +1,10 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useCallback, useEffect, useState } from "react";
 import meta from "./ieso-post-example.json";
 import { TextBox } from "../../components/TextBox";
 import { TextArea } from "../../components/TextArea";
 import { RangeInput } from "../../components/RangeInput";
 import { RadioGroup } from "../../components/RadioGroup";
+import { ButtonFlow } from "../../components/ButtonFlow";
 
 export interface CreatePostProps {}
 
@@ -22,6 +23,25 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 	 */
 	useEffect(() => {
 		console.log(meta);
+		/**
+		 * send post click callback
+		 */
+		const handleSendPost = () => {
+			const view = meta.views[0];
+			for (let i = 0; view.children && i < view.children?.length; i++) {
+				const child: any = view.children[i];
+				const child_view: any = view.child_view;
+				if (child_view) {
+				} else {
+					if (child.dest && child.dest.length > 0) {
+						const dest = child.dest[0];
+						if (dest.data_model === "posts") {
+							console.log(dest, state);
+						}
+					}
+				}
+			}
+		};
 		const view = meta.views[0];
 		for (let i = 0; view.children && i < view.children?.length; i++) {
 			const child: any = view.children[i];
@@ -127,9 +147,22 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 						/>,
 					]);
 				}
+				if (child.view_type === "Button") {
+					setState((state) => [...state, undefined]);
+					setUI((value) => [
+						...value,
+						<ButtonFlow
+							id={child.id}
+							text={child.text}
+							style={child.style}
+							onClick={handleSendPost}
+							key={child.id}
+						/>,
+					]);
+				}
 			}
 		}
-	}, []);
+	}, [setUI, setState]);
 	return (
 		<>
 			{UI.map((el) => el)}

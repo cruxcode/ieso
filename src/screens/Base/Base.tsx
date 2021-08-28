@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Brand } from "../../components/Brand";
 import { Button } from "../../components/Button";
 import { About } from "../About/About";
-import { CreatePost } from "../CreatePost2/CreatePost2";
+import { CreatePost } from "../CreatePost/CreatePost";
 import { Privacy } from "../Privacy/Privacy";
 import { Resources } from "../Resources/Resources";
 import { SiteRules } from "../SiteRules/SiteRules";

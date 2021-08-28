@@ -626,8 +626,12 @@
 				{
 					"id": "button_1",
 					"view_type": "Button",
-					"labelStyle": {
+					"text": "Send Post",
+					"style": {
 						"fontFamily": "Spectral"
+					},
+					"handlers": {
+						"onClick": "(event)=>{dispatchAPIEvent({type: {action: 'create', model: 'posts'}, token: localStorage.getItem('token')})};"
 					}
 				}
 			],

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { RadioGroup } from "../../components/RadioGroup";
 import { RangeInput } from "../../components/RangeInput";
 import { TextArea } from "../../components/TextArea";
+import { TextBox } from "../../components/TextBox";
 import { EventManager } from "../../lib/EventManager/EventManager";
 
 export interface CreatePostProps {}
@@ -291,6 +293,162 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 					onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
 						setSurprised(parseFloat(event.target.value));
 					},
+				}}
+			/>
+			<TextBox
+				id="text_6"
+				value="Are you feeling this way because of specific event? *"
+				style={{
+					fontFamily: "Spectral",
+					paddingTop: "1rem",
+				}}
+			/>
+			<RadioGroup
+				id={"radio_1"}
+				label={"Yes"}
+				options={[
+					{
+						id: "radio_option_1",
+						label: "Yes",
+						value: "yes",
+					},
+					{
+						id: "radio_option_2",
+						label: "No",
+						value: "no",
+					},
+				]}
+				style={{ paddingBottom: "1rem" }}
+				labelStyle={{
+					fontFamily: "Spectral",
+				}}
+				itemStyle={{
+					display: "block",
+				}}
+			/>
+			<TextArea
+				id="textbox_2"
+				label="How would you describe what happened? *"
+				value=""
+			/>
+			<TextBox
+				id="text_7"
+				value="When did this happen? *"
+				style={{
+					fontFamily: "Spectral",
+					paddingTop: "1rem",
+				}}
+			/>
+			<RadioGroup
+				id="radio_2"
+				label=""
+				options={[
+					{
+						label: "within the last hour",
+						id: "radio_2_option_1",
+						value: "within the last hour",
+					},
+					{
+						label: "within the last day",
+						value: "within the last day",
+						id: "radio_2_option_2",
+					},
+					{
+						label: "within the last week",
+						value: "within the last week",
+						id: "radio_2_option_3",
+					},
+					{
+						label: "within the last week",
+						value: "within the last week",
+						id: "radio_2_option_4",
+					},
+					{
+						label: "other",
+						id: "radio_2_option_5",
+						value: "other",
+					},
+				]}
+				labelStyle={{
+					fontFamily: "Spectral",
+				}}
+			/>
+			<TextBox
+				id="text_8"
+				value="Would you like this post to be public? *"
+				style={{
+					fontFamily: "Spectral",
+					paddingTop: "1rem",
+				}}
+			/>
+			<RadioGroup
+				id="radio_3"
+				label=""
+				options={[
+					{
+						label: "public",
+						id: "radio_3_option_1",
+						value: "public",
+					},
+					{
+						label: "private",
+						id: "radio_3_option_2",
+						value: "private",
+					},
+				]}
+			/>
+			<TextBox
+				id="text_5"
+				value="If your post is public, you may receive replies from other users."
+				style={{
+					fontFamily: "Spectral",
+					paddingTop: "0.5rem",
+				}}
+			/>
+			<TextBox
+				id="text_9"
+				value="Is this related to COVID 19 or issues relevant to Black Lives Matter? *"
+				style={{
+					fontFamily: "Spectral",
+					paddingTop: "1rem",
+				}}
+			/>
+			<RadioGroup
+				id="radio_4"
+				label=""
+				options={[
+					{
+						label: "COVID 19",
+						value: "COVID 19",
+						id: "radio_4_option_1",
+
+						handlers: {
+							onChange:
+								"(event)=>{document.querySelector('#textbox_3').style.display='none';}",
+						},
+					},
+					{
+						label: "Black Lives Matter",
+						value: "Black Lives Matter",
+						id: "radio_4_option_2",
+
+						handlers: {
+							onChange:
+								"(event)=>{document.querySelector('#textbox_3').style.display='none';}",
+						},
+					},
+					{
+						label: "Other",
+						value: "Other",
+						id: "radio_4_option_3",
+						handlers: {
+							onChange:
+								"(event)=>{document.querySelector('#textbox_3').style.display='initial';}",
+						},
+					},
+				]}
+				style={{
+					fontFamily: "Spectral",
 				}}
 			/>
 			{/**
