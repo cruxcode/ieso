@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Button } from "../../components/Button";
 import { RadioGroup } from "../../components/RadioGroup";
 import { RangeInput } from "../../components/RangeInput";
 import { TextArea } from "../../components/TextArea";
@@ -44,7 +45,11 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 	const [disgusted, setDisgusted] = useState<number>(disgustedInitialValue);
 	const surprisedInitialValue = 0;
 	const [surprised, setSurprised] = useState<number>(surprisedInitialValue);
-
+	const [isSpecific, setIsSpecific] = useState<string>("");
+	const [when, setWhen] = useState<string>("");
+	const [visibility, setVisibility] = useState<string>("");
+	const [cause, setCause] = useState<string>("");
+	const [detailedCause, setDetailedCause] = useState<string>("");
 	/**
 	 * auto generated code
 	 * below code is generated when this template was created
@@ -69,6 +74,11 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 			afraid,
 			disgusted,
 			surprised,
+			isSpecific,
+			visibility,
+			when,
+			cause,
+			detailed_cause: detailedCause,
 		});
 	}, [
 		feeling,
@@ -87,34 +97,13 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 		afraid,
 		disgusted,
 		surprised,
+		isSpecific,
+		when,
+		cause,
+		detailedCause,
+		visibility,
 	]);
 
-	/**
-	 * auto-generated code
-	 */
-	const createPostHeaders = new Headers();
-	createPostHeaders.append("Content-Type", "application/json");
-	EventManager.dispatch(
-		"CreatePost",
-		createPostEvent,
-		{ token: localStorage.getItem("token") },
-		createPostHeaders,
-		"POST"
-	).then((resp) => {
-		/**
-		 * auto-generated code
-		 * what to do after success or failure
-		 * options are:
-		 * 1. refresh the page
-		 * 3. show success/failure snackbar
-		 * 3. show success/failure dialog box
-		 */
-		if (resp.success) {
-			// createPostSuccessResponse();
-		} else {
-			// createPostFailureResponse();
-		}
-	});
 	return (
 		<div style={{ textAlign: "left" }}>
 			<h1>Submit a Posting</h1>
@@ -325,6 +314,9 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 				itemStyle={{
 					display: "block",
 				}}
+				onChange={(val: string) => {
+					setIsSpecific(val);
+				}}
 			/>
 			<TextArea
 				id="textbox_2"
@@ -372,6 +364,9 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 				labelStyle={{
 					fontFamily: "Spectral",
 				}}
+				onChange={(val: string) => {
+					setWhen(val);
+				}}
 			/>
 			<TextBox
 				id="text_8"
@@ -396,6 +391,9 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 						value: "private",
 					},
 				]}
+				onChange={(val: string) => {
+					setVisibility(val);
+				}}
 			/>
 			<TextBox
 				id="text_5"
@@ -450,7 +448,32 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 				style={{
 					fontFamily: "Spectral",
 				}}
+				onChange={(val: string) => {
+					setCause(val);
+				}}
 			/>
+			{cause === "Other" ? (
+				<TextArea
+					id=""
+					value={detailedCause}
+					label=""
+					handlers={{
+						onChange: (
+							event: React.ChangeEvent<HTMLInputElement>
+						) => {
+							setDetailedCause(event.target.value);
+						},
+					}}
+				/>
+			) : null}
+			<Button
+				onClick={() => {
+					console.log(createPostEvent);
+				}}
+				style={{ marginTop: "1rem", marginBottom: "1rem" }}
+			>
+				Send Post
+			</Button>
 			{/**
 			 * auto generate code
 			 * this code is generated to take care of response
@@ -464,7 +487,7 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 /**
  * auto generated code for both backend and frontend
  */
-interface CreatePostEvent {
+export interface CreatePostEvent {
 	feeling: string;
 	angry: number;
 	sad: number;
@@ -481,18 +504,9 @@ interface CreatePostEvent {
 	afraid: number;
 	disgusted: number;
 	surprised: number;
+	isSpecific: string;
+	visibility: string;
+	when: string;
+	cause: string;
+	detailed_cause: string;
 }
-
-/**
- * auto generated code for frontend
- */
-
-/**
- * auto generated code
- * check if it satisfies schema for backend
- */
-// function satisfiesCreatePostEvent(createPostEvent: any) {}
-
-/**
- *
- */
