@@ -64,3 +64,14 @@ export const getUserList = (token: string) => {
 			.catch((err) => console.log(err));
 	});
 };
+
+export const getUserRole = (token: string) => {
+	return new Promise((res, rej) => {
+		fetch(`http://localhost:4000/role?token=${token}`)
+			.then((resp) => resp.json())
+			.then((resp) => {
+				res(resp);
+			})
+			.catch((err) => console.log(err));
+	});
+};

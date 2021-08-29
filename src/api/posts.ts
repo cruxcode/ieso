@@ -64,3 +64,24 @@ export const getPost = (postID: string, token: string) => {
 			});
 	});
 };
+
+export const castApproval = (postID: string, status: string, token: string) => {
+	var headers = new Headers();
+	headers.append("Content-Type", "application/json");
+	const options = {
+		method: "PUT",
+		body: JSON.stringify({ postID, token, status }),
+		headers: headers,
+	};
+	return new Promise((res, rej) => {
+		fetch("http://localhost:4001/approval", options)
+			.then((resp) => resp.json())
+			.then((resp) => {
+				res(resp);
+			})
+			.catch((err) => {
+				console.log(err);
+				rej(err);
+			});
+	});
+};
