@@ -1,4 +1,5 @@
 import React from "react";
+import { CreatePostButton } from "../../components/CreatePostButton";
 
 export interface ResourcesProps {}
 
@@ -59,6 +60,7 @@ export const Resources: React.FC<ResourcesProps> = (props) => {
 				- find a local support group of others who are experiencing
 				grief—not therapist/professionally ran.
 			</li>
+			<CreatePostButton />
 		</div>
 	);
 };

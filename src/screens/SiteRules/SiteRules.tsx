@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { CreatePostButton } from "../../components/CreatePostButton";
 
 export interface SiteRulesProps {}
 
@@ -30,6 +31,7 @@ export const SiteRules: React.FC<SiteRulesProps> = (props) => {
 				Abusing the site's <Link to="/terms">Terms of Service</Link>{" "}
 				will result in an account ban.
 			</li>
+			<CreatePostButton />
 		</div>
 	);
 };

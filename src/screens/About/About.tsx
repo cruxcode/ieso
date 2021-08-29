@@ -1,4 +1,6 @@
 import React from "react";
+import { CreatePostButton } from "../../components/CreatePostButton";
+import { CreatePost } from "../CreatePost/CreatePost";
 
 export interface AboutProps {}
 
@@ -35,6 +37,7 @@ export const About: React.FC<AboutProps> = (props) => {
 					information sheet.
 				</p>
 			</div>
+			<CreatePostButton />
 		</div>
 	);
 };

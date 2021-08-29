@@ -1,4 +1,5 @@
 import React from "react";
+import { CreatePostButton } from "../../components/CreatePostButton";
 
 export interface PrivacyProps {}
 
@@ -273,6 +274,7 @@ export const Privacy: React.FC<PrivacyProps> = (props) => {
 					</li>
 				</ul>
 			</p>
+			<CreatePostButton />
 		</div>
 	);
 };
