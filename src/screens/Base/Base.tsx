@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Brand } from "../../components/Brand";
 import { Button } from "../../components/Button";
+import { useAuth } from "../../providers/ProvideAuth";
 import { About } from "../About/About";
 import { CreatePost } from "../CreatePost/CreatePost";
 import { Privacy } from "../Privacy/Privacy";
@@ -12,6 +13,8 @@ import { Terms } from "../Terms/Terms";
 export interface BaseProps {}
 
 export const Base: React.FC<BaseProps> = (props) => {
+	const { token, signout } = useAuth();
+	console.log(token);
 	return (
 		<div>
 			<Router>
@@ -27,21 +30,39 @@ export const Base: React.FC<BaseProps> = (props) => {
 								flexWrap: "wrap",
 							}}
 						>
-							<Button
-								style={{
-									marginTop: "1rem",
-									marginRight: "1rem",
-								}}
-							>
-								<a href="/login">Sign In</a>
-							</Button>
-							<Button
-								style={{
-									marginTop: "1rem",
-								}}
-							>
-								<a href="/register">Register</a>
-							</Button>
+							{token ? (
+								<Button
+									style={{
+										marginTop: "1rem",
+										marginRight: "1rem",
+									}}
+									onClick={async () => {
+										await signout();
+										window.location.href =
+											"http://localhost:3000";
+									}}
+								>
+									Logout
+								</Button>
+							) : (
+								<>
+									<Button
+										style={{
+											marginTop: "1rem",
+											marginRight: "1rem",
+										}}
+									>
+										<a href="/login">Sign In</a>
+									</Button>
+									<Button
+										style={{
+											marginTop: "1rem",
+										}}
+									>
+										<a href="/register">Register</a>
+									</Button>
+								</>
+							)}
 						</div>
 						<br />
 						<div style={{ textAlign: "left" }}>

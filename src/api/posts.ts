@@ -39,7 +39,7 @@ export const dispatchCreatePostEvent = (post: CreatePostEvent) => {
 		headers: headers,
 	};
 	return new Promise((res, rej) => {
-		fetch("http://localhost:4001/post", options)
+		fetch("http://localhost:4001", options)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);

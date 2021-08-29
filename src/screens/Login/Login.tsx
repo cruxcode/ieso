@@ -1,23 +1,21 @@
 import React, { useCallback, useRef } from "react";
 import { login } from "../../api/user";
 import { Button } from "../../components/Button";
+import { useAuth } from "../../providers/ProvideAuth";
 
 export interface LoginProps {}
 
 export const Login: React.FC<LoginProps> = (props) => {
 	const username = useRef<HTMLInputElement>(null);
 	const password = useRef<HTMLInputElement>(null);
+	const { signin } = useAuth();
 	const loginHandler = useCallback(
 		(event: any) => {
 			if (username.current && password.current) {
 				const name = username.current.value;
 				const pass = password.current.value;
-				login(name, pass).then((resp: any) => {
-					localStorage.setItem(
-						"payload",
-						JSON.stringify(resp.payload)
-					);
-					localStorage.setItem("token", resp.token);
+				login(name, pass).then(async (resp: any) => {
+					await signin(JSON.stringify(resp.payload), resp.token);
 					window.location.href = "http://localhost:3000";
 				});
 			}
