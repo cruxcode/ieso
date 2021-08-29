@@ -1,3 +1,5 @@
+import { useAuth } from "../providers/ProvideAuth";
+
 export const usernameExists = (username: string) => {
 	var headers = new Headers();
 	headers.append("Content-Type", "application/json");
@@ -44,6 +46,17 @@ export const login = (username: string, password: string) => {
 	};
 	return new Promise((res, rej) => {
 		fetch("http://localhost:4000/login", options)
+			.then((resp) => resp.json())
+			.then((resp) => {
+				res(resp);
+			})
+			.catch((err) => console.log(err));
+	});
+};
+
+export const getUserList = (token: string) => {
+	return new Promise((res, rej) => {
+		fetch(`http://localhost:4000/user-list?token=${token}`)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);

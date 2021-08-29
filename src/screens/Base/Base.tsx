@@ -5,6 +5,7 @@ import { Button } from "../../components/Button";
 import { useAuth } from "../../providers/ProvideAuth";
 import { About } from "../About/About";
 import { CreatePost } from "../CreatePost/CreatePost";
+import { Messages } from "../Messages/Messages";
 import { Privacy } from "../Privacy/Privacy";
 import { Resources } from "../Resources/Resources";
 import { SiteRules } from "../SiteRules/SiteRules";
@@ -97,6 +98,9 @@ export const Base: React.FC<BaseProps> = (props) => {
 					</div>
 					<div style={{ ...RightChildStyle }}>
 						<Switch>
+							<Route path="/messages">
+								<Messages />
+							</Route>
 							<Route path="/about">
 								<About />
 							</Route>
