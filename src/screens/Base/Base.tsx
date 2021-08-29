@@ -5,6 +5,7 @@ import { Button } from "../../components/Button";
 import { useAuth } from "../../providers/ProvideAuth";
 import { About } from "../About/About";
 import { CreatePost } from "../CreatePost/CreatePost";
+import { Home } from "../Home/Home";
 import { Messages } from "../Messages/Messages";
 import { Privacy } from "../Privacy/Privacy";
 import { Resources } from "../Resources/Resources";
@@ -14,7 +15,7 @@ import { Terms } from "../Terms/Terms";
 export interface BaseProps {}
 
 export const Base: React.FC<BaseProps> = (props) => {
-	const { token, signout } = useAuth();
+	const { token, signout, username } = useAuth();
 	console.log(token);
 	return (
 		<div>
@@ -23,6 +24,7 @@ export const Base: React.FC<BaseProps> = (props) => {
 					<div style={{ ...LeftChildStyle }}>
 						<Brand />
 						<br />
+						{username ? <>Signed in as {username}</> : null}
 						<div
 							style={{
 								display: "flex",
@@ -120,7 +122,7 @@ export const Base: React.FC<BaseProps> = (props) => {
 								<CreatePost />
 							</Route>
 							<Route path="/">
-								<About />
+								<Home />
 							</Route>
 						</Switch>
 					</div>

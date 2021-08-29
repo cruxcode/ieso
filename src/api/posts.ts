@@ -85,3 +85,17 @@ export const castApproval = (postID: string, status: string, token: string) => {
 			});
 	});
 };
+
+export const getApprovedList = () => {
+	return new Promise((res, rej) => {
+		fetch("http://localhost:4001/approved")
+			.then((resp) => resp.json())
+			.then((resp) => {
+				res(resp);
+			})
+			.catch((err) => {
+				console.log(err);
+				rej(err);
+			});
+	});
+};
