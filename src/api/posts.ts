@@ -50,3 +50,17 @@ export const dispatchCreatePostEvent = (post: CreatePostEvent) => {
 			});
 	});
 };
+
+export const getPost = (postID: string, token: string) => {
+	return new Promise((res, rej) => {
+		fetch(`http://localhost:4001?token=${token}&postID=${postID}`)
+			.then((resp) => resp.json())
+			.then((resp) => {
+				res(resp);
+			})
+			.catch((err) => {
+				console.log(err);
+				rej(err);
+			});
+	});
+};
