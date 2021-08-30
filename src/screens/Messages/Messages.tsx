@@ -28,14 +28,20 @@ export const Messages: React.FC<MessagesProps> = (props) => {
 	useEffect(() => {
 		connect(() => {
 			joinrooms(token);
-			socket.on("joinrooms", (msg: any) => {
-				console.log(msg);
-			});
 		});
 		return () => {
 			disconnect();
 		};
-	}, []);
+	}, [connect, joinrooms, disconnect, token]);
+	useEffect(() => {
+		const joinRoomsListener = (msg: any) => {
+			console.log(msg);
+		};
+		socket.on("joinrooms", joinRoomsListener);
+		return () => {
+			socket.off("joinrooms", joinRoomsListener);
+		};
+	}, [socket]);
 	const onUserSelect = useCallback(
 		(user: User) => {
 			console.log(user);

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getChats } from "../api/chat";
 import { getPost } from "../api/posts";
 import { useAuth } from "../providers/ProvideAuth";
+import { ProvideSocket, useSocket } from "../providers/ProvideSocket";
 import { Button } from "./Button";
 import { PostChat } from "./PostChat";
 import { TextArea } from "./TextArea";
@@ -14,6 +15,7 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
 	const { token } = useAuth();
 	const [chats, setChats] = useState([]);
 	const [currentText, setCurrentText] = useState<string>("");
+	const { socket } = useSocket();
 	useEffect(() => {
 		if (props.roomID && token) {
 			getChats(props.roomID, token).then((resp: any) => {
@@ -23,6 +25,15 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
 			});
 		}
 	}, [props.roomID, setChats, token]);
+	useEffect(() => {
+		const onTextMsg = (msg: any) => {
+			console.log(msg);
+		};
+		socket.on("textmsg", onTextMsg);
+		return () => {
+			socket.off("textmsg", onTextMsg);
+		};
+	}, []);
 	return (
 		<div style={{ height: "calc(100%)" }}>
 			<div style={{ height: "calc(100% - 10rem)", overflowY: "scroll" }}>
@@ -69,7 +80,20 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
 						transform: "translate(0, -50%)",
 					}}
 				>
-					<Button style={{}}>SEND</Button>
+					<Button
+						style={{}}
+						onClick={() => {
+							if (socket.connected) {
+								socket.emit("textmsg", {
+									token,
+									text: currentText,
+									roomID: props.roomID,
+								});
+							}
+						}}
+					>
+						SEND
+					</Button>
 				</div>
 			</div>
 		</div>
