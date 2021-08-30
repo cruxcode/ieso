@@ -3,6 +3,7 @@ import { getUserList } from "../../api/user";
 import { ChatBox } from "../../components/ChatBox";
 import { UserList } from "../../components/UserList";
 import { useAuth } from "../../providers/ProvideAuth";
+import { useSocket } from "../../providers/ProvideSocket";
 import { User } from "../../types/UserList";
 
 export interface MessagesProps {}
@@ -12,6 +13,7 @@ export const Messages: React.FC<MessagesProps> = (props) => {
 	const [messages, setMessages] = useState<[]>([]);
 	const [selectedUser, setSelectedUser] = useState<User>();
 	const { token } = useAuth();
+	const { socket, connect, joinrooms, disconnect } = useSocket();
 	useEffect(() => {
 		if (token)
 			getUserList(token).then((resp: any) => {
@@ -23,6 +25,17 @@ export const Messages: React.FC<MessagesProps> = (props) => {
 				}
 			});
 	}, [setUserlist, token, setSelectedUser]);
+	useEffect(() => {
+		connect(() => {
+			joinrooms(token);
+			socket.on("joinrooms", (msg: any) => {
+				console.log(msg);
+			});
+		});
+		return () => {
+			disconnect();
+		};
+	}, []);
 	const onUserSelect = useCallback(
 		(user: User) => {
 			console.log(user);

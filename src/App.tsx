@@ -6,24 +6,27 @@ import { Register } from "./screens/Register/Register";
 import { Login } from "./screens/Login/Login";
 import "./globals";
 import { ProvideAuth } from "./providers/ProvideAuth";
+import { ProvideSocket } from "./providers/ProvideSocket";
 
 function App() {
 	return (
 		<div className="App">
 			<ProvideAuth>
-				<Router>
-					<Switch>
-						<Route path="/register">
-							<Register />
-						</Route>
-						<Route path="/login">
-							<Login />
-						</Route>
-						<Route path="/">
-							<Base />
-						</Route>
-					</Switch>
-				</Router>
+				<ProvideSocket>
+					<Router>
+						<Switch>
+							<Route path="/register">
+								<Register />
+							</Route>
+							<Route path="/login">
+								<Login />
+							</Route>
+							<Route path="/">
+								<Base />
+							</Route>
+						</Switch>
+					</Router>
+				</ProvideSocket>
 			</ProvideAuth>
 		</div>
 	);

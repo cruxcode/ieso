@@ -67,6 +67,7 @@ export const PostChat: React.FC<PostChatProps> = (props) => {
 										display: "inline-block",
 										marginTop: "0.5rem",
 									}}
+									key={range}
 								>
 									{range}: {post[range]}
 								</div>
