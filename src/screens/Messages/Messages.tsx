@@ -54,7 +54,7 @@ export const Messages: React.FC<MessagesProps> = (props) => {
 		<div style={{ height: "100%" }}>
 			<h1>Messages</h1>
 			<div style={{ display: "flex", height: "100%" }}>
-				<div style={{ flexBasis: "15rem" }}>
+				<div style={{ flexBasis: "0" }}>
 					<UserList
 						messages={messages}
 						userList={userlist}

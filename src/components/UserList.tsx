@@ -1,3 +1,4 @@
+import { useAuth } from "../providers/ProvideAuth";
 import { User } from "../types/UserList";
 
 export interface UserListProps {
@@ -7,8 +8,16 @@ export interface UserListProps {
 }
 
 export const UserList: React.FC<UserListProps> = (props) => {
+	const { userID } = useAuth();
+	if (
+		props.userList &&
+		props.userList.length > 0 &&
+		props.userList[0]._id === userID
+	) {
+		return null;
+	}
 	return (
-		<div>
+		<div style={{ minWidth: "15rem" }}>
 			<div>
 				<input
 					style={{
