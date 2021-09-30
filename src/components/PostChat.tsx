@@ -15,12 +15,22 @@ export const PostChat: React.FC<PostChatProps> = (props) => {
 	const [ranges, setRanges] = useState<string[]>([]);
 	const [role, setRole] = useState<string>("");
 	const [msg, setMsg] = useState<string>("");
+	const [approved, setApproved] = useState<boolean>(false);
 	useEffect(() => {
 		if (token)
 			getPost(props.postID, token).then((resp: any) => {
 				console.log(resp);
 				if (resp.success) {
 					setPost(resp.post.post);
+					if (
+						resp.post &&
+						resp.post.approvals.length >= 2 &&
+						!resp.post.rejected
+					) {
+						setApproved(true);
+					} else {
+						setApproved(false);
+					}
 					const keys = Object.keys(resp.post.post);
 					let ranges = [];
 					for (let i = 0; i < keys.length; i++) {
@@ -37,7 +47,7 @@ export const PostChat: React.FC<PostChatProps> = (props) => {
 					setRanges(ranges);
 				}
 			});
-	}, [token, setRanges, setPost, props.postID]);
+	}, [token, setRanges, setPost, props.postID, setApproved]);
 	useEffect(() => {
 		if (token) {
 			getUserRole(token).then((resp: any) => {
@@ -94,22 +104,26 @@ export const PostChat: React.FC<PostChatProps> = (props) => {
 					>
 						Reject
 					</Button>
-					<Button
-						style={{ paddingRight: "1rem" }}
-						onClick={async () => {
-							const resp: any = await castApproval(
-								props.postID,
-								"approve",
-								token!
-							);
-							console.log(resp);
-							if (resp.success) {
-								setMsg("Post approved successfully");
-							}
-						}}
-					>
-						Approve
-					</Button>
+					{approved ? (
+						"Post has been approved"
+					) : (
+						<Button
+							style={{ paddingRight: "1rem" }}
+							onClick={async () => {
+								const resp: any = await castApproval(
+									props.postID,
+									"approve",
+									token!
+								);
+								console.log(resp);
+								if (resp.success) {
+									setMsg("Post approved successfully");
+								}
+							}}
+						>
+							Approve
+						</Button>
+					)}
 					{msg}
 				</div>
 			) : null}
