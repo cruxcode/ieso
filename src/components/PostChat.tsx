@@ -16,6 +16,7 @@ export const PostChat: React.FC<PostChatProps> = (props) => {
 	const [role, setRole] = useState<string>("");
 	const [msg, setMsg] = useState<string>("");
 	const [approved, setApproved] = useState<boolean>(false);
+	const [approvalNumber, setApprovalNumber] = useState<number>(0);
 	useEffect(() => {
 		if (token)
 			getPost(props.postID, token).then((resp: any) => {
@@ -24,6 +25,7 @@ export const PostChat: React.FC<PostChatProps> = (props) => {
 					setPost(resp.post.post);
 					if (
 						resp.post &&
+						resp.post.approvals &&
 						resp.post.approvals.length >= 2 &&
 						!resp.post.rejected
 					) {
@@ -31,6 +33,8 @@ export const PostChat: React.FC<PostChatProps> = (props) => {
 					} else {
 						setApproved(false);
 					}
+					if (resp.post && resp.post.approvals)
+						setApprovalNumber(resp.post.approvals.length);
 					const keys = Object.keys(resp.post.post);
 					let ranges = [];
 					for (let i = 0; i < keys.length; i++) {
@@ -107,22 +111,27 @@ export const PostChat: React.FC<PostChatProps> = (props) => {
 					{approved ? (
 						"Post has been approved"
 					) : (
-						<Button
-							style={{ paddingRight: "1rem" }}
-							onClick={async () => {
-								const resp: any = await castApproval(
-									props.postID,
-									"approve",
-									token!
-								);
-								console.log(resp);
-								if (resp.success) {
-									setMsg("Post approved successfully");
-								}
-							}}
-						>
-							Approve
-						</Button>
+						<>
+							<Button
+								style={{ paddingRight: "1rem" }}
+								onClick={async () => {
+									const resp: any = await castApproval(
+										props.postID,
+										"approve",
+										token!
+									);
+									console.log(resp);
+									if (resp.success) {
+										setMsg("Post approved successfully");
+									}
+								}}
+							>
+								Approve
+							</Button>
+							<span>
+								{`Approved by ${approvalNumber} moderators`}
+							</span>
+						</>
 					)}
 					{msg}
 				</div>
