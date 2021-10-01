@@ -53,6 +53,7 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 	const [detailedCause, setDetailedCause] = useState<string>("");
 	const [disableButton, setDisableButton] = useState<boolean>(false);
 	const [msg, setMsg] = useState<string>("");
+	const [happened, setHappened] = useState<string>("");
 	/**
 	 * auto generated code
 	 * below code is generated when this template was created
@@ -82,6 +83,7 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 			when,
 			cause,
 			detailed_cause: detailedCause,
+			happened,
 		});
 	}, [
 		feeling,
@@ -105,6 +107,7 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 		cause,
 		detailedCause,
 		visibility,
+		happened,
 	]);
 
 	return (
@@ -324,7 +327,12 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 			<TextArea
 				id="textbox_2"
 				label="How would you describe what happened? *"
-				value=""
+				value={happened}
+				handlers={{
+					onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
+						setHappened(event.target.value);
+					},
+				}}
 			/>
 			<TextBox
 				id="text_7"

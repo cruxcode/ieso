@@ -23,6 +23,7 @@ export interface CreatePostEvent {
 	when: string;
 	cause: string;
 	detailed_cause: string;
+	happened: string;
 }
 
 export const dispatchCreatePostEvent = (post: CreatePostEvent) => {

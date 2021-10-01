@@ -8,7 +8,6 @@ export interface HomeProps {}
 
 export const Home: React.FC<HomeProps> = () => {
 	const [posts, setPosts] = useState<any[]>();
-	const [ranges, setRanges] = useState<any[]>();
 	useEffect(() => {
 		getApprovedList().then((resp: any) => {
 			if (resp && resp.success) {

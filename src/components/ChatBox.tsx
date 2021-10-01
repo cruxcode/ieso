@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getChats, updateReadTime } from "../api/chat";
 import { getPost } from "../api/posts";
 import { useAuth } from "../providers/ProvideAuth";
@@ -13,7 +13,7 @@ export interface ChatBoxProps {
 
 export const ChatBox: React.FC<ChatBoxProps> = (props) => {
 	const { token } = useAuth();
-	const [chats, setChats] = useState([]);
+	const [chats, setChats] = useState<any[]>([]);
 	const [currentText, setCurrentText] = useState<string>("");
 	const { socket } = useSocket();
 	useEffect(() => {
@@ -28,12 +28,18 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
 	useEffect(() => {
 		const onTextMsg = (msg: any) => {
 			console.log(msg);
+			if (msg && msg.success && msg.msg) {
+				setChats((chats: any[]) => {
+					return [...chats, msg.msg];
+				});
+				setCurrentText("");
+			}
 		};
 		socket.on("textmsg", onTextMsg);
 		return () => {
 			socket.off("textmsg", onTextMsg);
 		};
-	}, []);
+	}, [setChats, setCurrentText]);
 	useEffect(() => {
 		if (token) updateReadTime(props.roomID, token);
 	}, [props.roomID, token]);
@@ -50,7 +56,14 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
 							/>
 						);
 					} else {
-						return null;
+						return (
+							<div style={{ borderBottom: "1px solid #C4C4C4" }}>
+								<div>
+									<b>{chat.username}</b>
+								</div>
+								<div>{chat.text}</div>
+							</div>
+						);
 					}
 				})}
 			</div>

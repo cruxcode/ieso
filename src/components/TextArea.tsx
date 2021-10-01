@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export interface TextAreaProps {
 	id: string;
@@ -10,6 +10,10 @@ export interface TextAreaProps {
 }
 
 export const TextArea: React.FC<TextAreaProps> = (props) => {
+	const [def, setDef] = useState<string>(props.value);
+	useEffect(() => {
+		setDef(props.value);
+	}, [props.value, setDef]);
 	return (
 		<div>
 			<label
@@ -28,7 +32,7 @@ export const TextArea: React.FC<TextAreaProps> = (props) => {
 					resize: "none",
 					...props.style,
 				}}
-				defaultValue={props.value}
+				value={def}
 				{...props.handlers}
 			/>
 		</div>
