@@ -18,12 +18,16 @@ export const usernameExists = (username: string) => {
 	});
 };
 
-export const register = (username: string, password: string) => {
+export const register = (
+	username: string,
+	password: string,
+	ethnicity: any
+) => {
 	var headers = new Headers();
 	headers.append("Content-Type", "application/json");
 	const options = {
 		method: "POST",
-		body: JSON.stringify({ username, password }),
+		body: JSON.stringify({ username, password, ethnicity }),
 		headers: headers,
 	};
 	return new Promise((res, rej) => {
