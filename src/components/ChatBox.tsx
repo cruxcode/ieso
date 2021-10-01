@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getChats } from "../api/chat";
+import { getChats, updateReadTime } from "../api/chat";
 import { getPost } from "../api/posts";
 import { useAuth } from "../providers/ProvideAuth";
 import { ProvideSocket, useSocket } from "../providers/ProvideSocket";
@@ -34,6 +34,9 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
 			socket.off("textmsg", onTextMsg);
 		};
 	}, []);
+	useEffect(() => {
+		if (token) updateReadTime(props.roomID, token);
+	}, [props.roomID, token]);
 	return (
 		<div style={{ height: "calc(100%)" }}>
 			<div style={{ height: "calc(100% - 10rem)", overflowY: "scroll" }}>

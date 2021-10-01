@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { getUnreadChatrooms } from "../../api/chat";
 import { getUserList } from "../../api/user";
 import { ChatBox } from "../../components/ChatBox";
 import { UserList } from "../../components/UserList";
@@ -14,6 +15,7 @@ export const Messages: React.FC<MessagesProps> = (props) => {
 	const [selectedUser, setSelectedUser] = useState<User>();
 	const { token } = useAuth();
 	const { socket, connect, joinrooms, disconnect } = useSocket();
+	const [unreadChatrooms, setUnreadChatroom] = useState<User[]>([]);
 	useEffect(() => {
 		if (token)
 			getUserList(token).then((resp: any) => {
@@ -42,6 +44,23 @@ export const Messages: React.FC<MessagesProps> = (props) => {
 			socket.off("joinrooms", joinRoomsListener);
 		};
 	}, [socket]);
+	useEffect(() => {
+		if (token) {
+			getUnreadChatrooms(token).then((unreads) => {
+				if (unreads) {
+					const unreadChatrooms: User[] = [];
+					for (let i = 0; i < unreads.length; i++) {
+						for (let j = 0; j < userlist.length; j++) {
+							if (userlist[j]._id == unreads[i].roomID) {
+								unreadChatrooms.push(userlist[j]);
+							}
+						}
+					}
+					setUnreadChatroom(unreadChatrooms);
+				}
+			});
+		}
+	}, [token, userlist, setUnreadChatroom]);
 	const onUserSelect = useCallback(
 		(user: User) => {
 			console.log(user);
@@ -49,7 +68,6 @@ export const Messages: React.FC<MessagesProps> = (props) => {
 		},
 		[setSelectedUser]
 	);
-	console.log(userlist);
 	return (
 		<div style={{ height: "100%" }}>
 			<h1>Messages</h1>
@@ -58,6 +76,7 @@ export const Messages: React.FC<MessagesProps> = (props) => {
 					<UserList
 						messages={messages}
 						userList={userlist}
+						unreadList={unreadChatrooms}
 						onSelect={onUserSelect}
 					/>
 				</div>

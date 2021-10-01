@@ -3,6 +3,7 @@ import { User } from "../types/UserList";
 
 export interface UserListProps {
 	userList: User[];
+	unreadList: User[];
 	messages: string[];
 	onSelect?: (user: User) => void;
 }
@@ -18,13 +19,37 @@ export const UserList: React.FC<UserListProps> = (props) => {
 	}
 	return (
 		<div style={{ minWidth: "15rem" }}>
-			<div>
+			{/* <div>
 				<input
 					style={{
 						width: "calc(100% - 1rem)",
 					}}
 				/>
-			</div>
+			</div> */}
+			{props.unreadList.length > 0 ? (
+				<div>
+					<b>New Messages</b>
+				</div>
+			) : null}
+			{props.unreadList.map((user, index) => {
+				return (
+					<div
+						style={{ borderBottom: "1px solid #C4C4C4" }}
+						onClick={() => {
+							if (props.onSelect) props.onSelect(user);
+						}}
+						key={user._id}
+					>
+						<p>{user.username}</p>
+						<p>{props.messages[index]}</p>
+					</div>
+				);
+			})}
+			{props.userList.length > 0 ? (
+				<div>
+					<b>Users</b>
+				</div>
+			) : null}
 			{props.userList.map((user, index) => {
 				return (
 					<div
