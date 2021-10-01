@@ -16,6 +16,7 @@ export const Register: React.FC<RegisterProps> = (props) => {
 	const [asian, setAsian] = useState<boolean>(false);
 	const [american, setAmerican] = useState<boolean>(false);
 	const [notIntersted, setNotIntersted] = useState<boolean>(false);
+	const [showMsg, setShowMsg] = useState<string>("");
 	const registerHandler = useCallback(
 		(event: any) => {
 			if (username.current && password.current) {
@@ -45,12 +46,17 @@ export const Register: React.FC<RegisterProps> = (props) => {
 						notIntersted,
 					};
 					register(name, pass, ethnicity).then((resp: any) => {
-						localStorage.setItem(
-							"payload",
-							JSON.stringify(resp.payload)
-						);
-						localStorage.setItem("token", resp.token);
-						window.location.href = "http://localhost:3000";
+						if (resp.success) {
+							localStorage.setItem(
+								"payload",
+								JSON.stringify(resp.payload)
+							);
+							localStorage.setItem("token", resp.token);
+							window.location.href = "http://localhost:3000";
+						} else {
+							console.log(resp);
+							setShowMsg(resp.msg);
+						}
 					});
 				}
 			}
@@ -208,6 +214,12 @@ export const Register: React.FC<RegisterProps> = (props) => {
 					<label htmlFor="no">Do not wish to disclose</label>
 				</div>
 				<br />
+				<br />
+				{showMsg ? (
+					<div style={{ color: "red" }}>{showMsg}</div>
+				) : (
+					<br></br>
+				)}
 				<br />
 				<Button style={{}} onClick={registerHandler}>
 					Register
