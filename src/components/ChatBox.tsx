@@ -4,6 +4,7 @@ import { getPost } from "../api/posts";
 import { useAuth } from "../providers/ProvideAuth";
 import { ProvideSocket, useSocket } from "../providers/ProvideSocket";
 import { Button } from "./Button";
+import { CommentChat } from "./CommentChat";
 import { PostChat } from "./PostChat";
 import { TextArea } from "./TextArea";
 
@@ -59,6 +60,14 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
 								postID={chat.postID}
 								username={chat.username}
 								key={chat._id}
+							/>
+						);
+					}
+					if (chat.type === "comments") {
+						return (
+							<CommentChat
+								commentID={chat.commentID}
+								username={chat.username}
 							/>
 						);
 					} else {

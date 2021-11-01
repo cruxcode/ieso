@@ -72,10 +72,10 @@ export const getApprovedComments = (postID: string) => {
 	});
 };
 
-export const getComment = (commentID: string) => {
+export const getComment = (commentID: string, token: string) => {
 	return new Promise((res, rej) => {
 		fetch(
-			`${process.env.REACT_APP_BACKEND_ORIGIN_POST}/comment?commentID=${commentID}`
+			`${process.env.REACT_APP_BACKEND_ORIGIN_POST}/comment?commentID=${commentID}&token=${token}`
 		)
 			.then((resp) => resp.json())
 			.then((resp) => {
