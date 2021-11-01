@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export interface PostProps {
 	username: string;
@@ -8,6 +9,7 @@ export interface PostProps {
 
 export const Post: React.FC<PostProps> = (props) => {
 	const [ranges, setRanges] = useState<any[]>([]);
+	const history = useHistory();
 	useEffect(() => {
 		const keys = Object.keys(props.post);
 		let ranges = [];
@@ -22,7 +24,12 @@ export const Post: React.FC<PostProps> = (props) => {
 		setRanges(ranges);
 	}, [setRanges, props.post]);
 	return (
-		<div style={{ backgroundColor: "white", padding: "1rem" }}>
+		<div
+			style={{ backgroundColor: "white", padding: "1rem" }}
+			onClick={() => {
+				history.push(`/post?postID=${props.postID}`);
+			}}
+		>
 			<div>
 				<b>{props.username}</b>
 			</div>

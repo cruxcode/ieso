@@ -2,11 +2,13 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Brand } from "../../components/Brand";
 import { Button } from "../../components/Button";
+import { ShowPost } from "../../components/ShowPost";
 import { useAuth } from "../../providers/ProvideAuth";
 import { About } from "../About/About";
 import { CreatePost } from "../CreatePost/CreatePost";
 import { Home } from "../Home/Home";
 import { Messages } from "../Messages/Messages";
+import { PostComment } from "../PostComment/PostComment";
 import { Privacy } from "../Privacy/Privacy";
 import { Resources } from "../Resources/Resources";
 import { SiteRules } from "../SiteRules/SiteRules";
@@ -124,6 +126,9 @@ export const Base: React.FC<BaseProps> = (props) => {
 							</Route>
 							<Route path="/createpost">
 								<CreatePost />
+							</Route>
+							<Route path="/post">
+								<PostComment />
 							</Route>
 							<Route path="/">
 								<Home />

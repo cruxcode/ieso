@@ -116,7 +116,9 @@ export const ShowPost: React.FC<ShowPostProps> = (props) => {
 
 	return (
 		<div style={{ textAlign: "left" }}>
-			<h2>Post by {props.post.username}</h2>
+			<h2 style={{ marginBottom: "1em" }}>
+				Post by {props.post.username}
+			</h2>
 			<TextArea
 				id="feeling"
 				label="How are you feeling? *"
@@ -128,7 +130,7 @@ export const ShowPost: React.FC<ShowPostProps> = (props) => {
 				}}
 				disabled={true}
 			/>
-			<h1>Emotional Rankings</h1>
+			<h3>Emotional Rankings</h3>
 			<p>
 				How much are you feeling each of the following emotions right
 				now, from 1 (low) to 10 (high)?

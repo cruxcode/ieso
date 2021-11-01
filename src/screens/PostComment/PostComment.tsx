@@ -19,9 +19,5 @@ export const PostComment: React.FC = (props) => {
 					console.log(err);
 				});
 	}, [setPost, postID]);
-	return (
-		<div>
-			<ShowPost post={post} />
-		</div>
-	);
+	return <div>{post ? <ShowPost post={post} /> : null}</div>;
 };
