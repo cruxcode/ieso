@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getApprovedComments, sendComment } from "../api/comments";
+import { getUserRole } from "../api/user";
+import { useAuth } from "../providers/ProvideAuth";
 import { Button } from "./Button";
 import { TextArea } from "./TextArea";
 
@@ -12,6 +14,8 @@ export const Comments: React.FC<CommentsProps> = (props) => {
 	const [currentText, setCurrentText] = useState("");
 	const [msg, setMsg] = useState("");
 	const [disabled, setDisabled] = useState<boolean>(false);
+	const [role, setRole] = useState<string>("");
+	const { token } = useAuth();
 	useEffect(() => {
 		getApprovedComments(props.postID)
 			.then((comments: any) => {
@@ -21,6 +25,14 @@ export const Comments: React.FC<CommentsProps> = (props) => {
 				console.log(err);
 			});
 	}, [setComments, props.postID]);
+	useEffect(() => {
+		if (token)
+			getUserRole(token).then((resp: any) => {
+				if (resp.success && resp.role) {
+					setRole(resp.role);
+				}
+			});
+	}, [setRole]);
 	return (
 		<div>
 			<div style={{ marginBottom: "1em", fontWeight: "bold" }}>
@@ -84,7 +96,11 @@ export const Comments: React.FC<CommentsProps> = (props) => {
 											"Some error occured. Please try again later"
 										);
 									}
-									window.location.href = window.location.href;
+									setDisabled(false);
+									setCurrentText("");
+									if (role === "moderator")
+										window.location.href =
+											window.location.href;
 								})
 								.catch((err) => {
 									console.log(err);
