@@ -12,18 +12,20 @@ export const PostComment: React.FC = (props) => {
 	const [post, setPost] = useState<any>();
 	useEffect(() => {
 		const token = localStorage.getItem("token");
-		if (token && postID) {
-			getPost(postID, token)
-				.then((post: any) => {
-					if (post.success) setPost(post.post);
-				})
-				.catch((err) => {
-					console.log(err);
-				});
-		} else if (postID)
+
+		if (postID)
 			getApprovedPost(postID)
 				.then((post: any) => {
 					if (post.success) setPost(post.post);
+					else if (token) {
+						getPost(postID, token)
+							.then((post: any) => {
+								if (post.success) setPost(post.post);
+							})
+							.catch((err) => {
+								console.log(err);
+							});
+					}
 				})
 				.catch((err) => {
 					console.log(err);
