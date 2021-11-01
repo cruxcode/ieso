@@ -12,7 +12,6 @@ export const Post: React.FC<PostProps> = (props) => {
 		const keys = Object.keys(props.post);
 		let ranges = [];
 		for (let i = 0; i < keys.length; i++) {
-			console.log(typeof props.post[keys[i]] === "number");
 			if (
 				typeof props.post[keys[i]] === "number" &&
 				props.post[keys[i]] > 0
@@ -40,6 +39,7 @@ export const Post: React.FC<PostProps> = (props) => {
 								display: "inline-block",
 								marginTop: "0.5rem",
 							}}
+							key={range}
 						>
 							{range}: {props.post[range]}
 						</div>

@@ -5,7 +5,6 @@ import { RadioGroup } from "../../components/RadioGroup";
 import { RangeInput } from "../../components/RangeInput";
 import { TextArea } from "../../components/TextArea";
 import { TextBox } from "../../components/TextBox";
-import { EventManager } from "../../lib/EventManager/EventManager";
 
 export interface CreatePostProps {}
 
