@@ -23,13 +23,8 @@ export const Home: React.FC<HomeProps> = () => {
 				const post = postWrapper.post;
 				const postID = postWrapper._id;
 				return (
-					<div>
-						<Post
-							postID={postID}
-							post={post}
-							username={username}
-							key={postID}
-						/>
+					<div key={postID}>
+						<Post postID={postID} post={post} username={username} />
 						<br />
 					</div>
 				);

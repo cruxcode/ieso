@@ -57,7 +57,10 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
 						);
 					} else {
 						return (
-							<div style={{ borderBottom: "1px solid #C4C4C4" }}>
+							<div
+								style={{ borderBottom: "1px solid #C4C4C4" }}
+								key={chat._id}
+							>
 								<div>
 									<b>{chat.username}</b>
 								</div>
