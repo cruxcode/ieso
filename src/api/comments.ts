@@ -12,7 +12,7 @@ export const sendComment = (comment: string, postID: string) => {
 		headers: headers,
 	};
 	return new Promise((res, rej) => {
-		fetch(`${process.env.REACT_APP_BACKEND_ORIGIN_POST}`, options)
+		fetch(`${process.env.REACT_APP_BACKEND_ORIGIN_POST}/comment`, options)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
@@ -41,7 +41,10 @@ export const castCommentApproval = (
 		headers: headers,
 	};
 	return new Promise((res, rej) => {
-		fetch(`${process.env.REACT_APP_BACKEND_ORIGIN_POST}/approval`, options)
+		fetch(
+			`${process.env.REACT_APP_BACKEND_ORIGIN_POST}/comment-approval`,
+			options
+		)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
@@ -54,15 +57,10 @@ export const castCommentApproval = (
 };
 
 export const getApprovedComments = (postID: string) => {
-	var headers = new Headers();
-	headers.append("Content-Type", "application/json");
-	const options = {
-		method: "POST",
-		body: JSON.stringify({ postID }),
-		headers: headers,
-	};
 	return new Promise((res, rej) => {
-		fetch(`${process.env.REACT_APP_BACKEND_ORIGIN_POST}`, options)
+		fetch(
+			`${process.env.REACT_APP_BACKEND_ORIGIN_POST}/approved-comments?postID=${postID}`
+		)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);

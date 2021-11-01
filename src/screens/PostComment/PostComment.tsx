@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getApprovedPost, getPost } from "../../api/posts";
+import { Comments } from "../../components/Comments";
 import { ShowPost } from "../../components/ShowPost";
 
 const useQuery = () => {
@@ -28,5 +29,10 @@ export const PostComment: React.FC = (props) => {
 					console.log(err);
 				});
 	}, [setPost, postID]);
-	return <div>{post ? <ShowPost post={post} /> : null}</div>;
+	return (
+		<div>
+			{post ? <ShowPost post={post} /> : null}
+			{postID ? <Comments postID={postID} /> : null}
+		</div>
+	);
 };
