@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { castApproval, getPost } from "../api/posts";
 import { getUserRole } from "../api/user";
 import { useAuth } from "../providers/ProvideAuth";
@@ -17,6 +18,7 @@ export const PostChat: React.FC<PostChatProps> = (props) => {
 	const [msg, setMsg] = useState<string>("");
 	const [approved, setApproved] = useState<boolean>(false);
 	const [approvalNumber, setApprovalNumber] = useState<number>(0);
+	const history = useHistory();
 	useEffect(() => {
 		if (token)
 			getPost(props.postID, token).then((resp: any) => {
@@ -61,7 +63,11 @@ export const PostChat: React.FC<PostChatProps> = (props) => {
 	return (
 		<div style={{ borderBottom: "1px solid #C4C4C4" }}>
 			{post ? (
-				<div>
+				<div
+					onClick={() => {
+						history.push(`/post?postID=${props.postID}`);
+					}}
+				>
 					<div>
 						<b>{props.username}</b>
 					</div>

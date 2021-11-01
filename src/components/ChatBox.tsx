@@ -68,6 +68,7 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
 							<CommentChat
 								commentID={chat.commentID}
 								username={chat.username}
+								key={chat._id}
 							/>
 						);
 					} else {

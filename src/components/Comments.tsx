@@ -41,7 +41,10 @@ export const Comments: React.FC<CommentsProps> = (props) => {
 			{comments && comments.length
 				? comments.map((comment: any) => {
 						return (
-							<div style={{ marginBottom: "0.5em" }}>
+							<div
+								style={{ marginBottom: "0.5em" }}
+								key={comment._id}
+							>
 								<b>{comment.username}</b>&nbsp;&nbsp;&nbsp;
 								{comment.comment}
 							</div>
