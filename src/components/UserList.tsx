@@ -34,7 +34,12 @@ export const UserList: React.FC<UserListProps> = (props) => {
 			{props.unreadList.map((user, index) => {
 				return (
 					<div
-						style={{ borderBottom: "1px solid #C4C4C4" }}
+						style={{
+							borderTop: "1px solid #C4C4C4",
+							borderBottom: "1px solid #C4C4C4",
+							paddingTop: "0.5em",
+							paddingBottom: "0.5em",
+						}}
 						onClick={() => {
 							if (props.onSelect) props.onSelect(user);
 						}}
@@ -46,14 +51,19 @@ export const UserList: React.FC<UserListProps> = (props) => {
 				);
 			})}
 			{props.userList.length > 0 ? (
-				<div>
+				<div style={{ marginTop: "2em" }}>
 					<b>Users</b>
 				</div>
 			) : null}
 			{props.userList.map((user, index) => {
 				return (
 					<div
-						style={{ borderBottom: "1px solid #C4C4C4" }}
+						style={{
+							borderTop: "1px solid #C4C4C4",
+							borderBottom: "1px solid #C4C4C4",
+							paddingTop: "0.5em",
+							paddingBottom: "0.5em",
+						}}
 						onClick={() => {
 							if (props.onSelect) props.onSelect(user);
 						}}

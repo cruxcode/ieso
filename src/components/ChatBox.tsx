@@ -44,8 +44,14 @@ export const ChatBox: React.FC<ChatBoxProps> = (props) => {
 		if (token) updateReadTime(props.roomID, token);
 	}, [props.roomID, token]);
 	return (
-		<div style={{ height: "calc(100%)" }}>
-			<div style={{ height: "calc(100% - 10rem)", overflowY: "scroll" }}>
+		<div
+			style={{
+				height: "calc(100vh - 3em)",
+				display: "grid",
+				gridTemplateRows: "1fr 4em",
+			}}
+		>
+			<div style={{ overflowY: "auto" }}>
 				{chats.map((chat: any) => {
 					if (chat.type === "posts") {
 						return (
