@@ -38,9 +38,6 @@ export const PostChat: React.FC<PostChatProps> = (props) => {
 					const keys = Object.keys(resp.post.post);
 					let ranges = [];
 					for (let i = 0; i < keys.length; i++) {
-						console.log(
-							typeof resp.post.post[keys[i]] === "number"
-						);
 						if (
 							typeof resp.post.post[keys[i]] === "number" &&
 							resp.post.post[keys[i]] > 0
