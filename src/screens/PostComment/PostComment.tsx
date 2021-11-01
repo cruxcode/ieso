@@ -16,7 +16,7 @@ export const PostComment: React.FC = (props) => {
 		if (postID)
 			getApprovedPost(postID)
 				.then((post: any) => {
-					if (post.success) setPost(post.post);
+					if (post.success && post.post) setPost(post.post);
 					else if (token) {
 						getPost(postID, token)
 							.then((post: any) => {
