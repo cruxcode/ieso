@@ -110,6 +110,43 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 		happened,
 	]);
 
+	// check if required fields are satisfied
+	const satisfiesConstraints = () => {
+		if (!feeling) {
+			setMsg("The field  - How are you feeling? - is required");
+			return false;
+		}
+		if (!isSpecific) {
+			setMsg(
+				"The field  - Are you feeling this way because of specific event? - is required"
+			);
+			return false;
+		}
+		if (isSpecific === "yes" && !happened) {
+			setMsg(
+				"The field  - How would you describe what happened? - is required"
+			);
+			return false;
+		}
+		if (!when) {
+			setMsg("The field  - When did this happen? - is required");
+			return false;
+		}
+		if (!visibility) {
+			setMsg(
+				"The field  - Would you like this post to be public? - is required"
+			);
+			return false;
+		}
+		if (!cause) {
+			setMsg(
+				"The field  - Is this related to COVID 19 or issues relevant to Black Lives Matter? - is required"
+			);
+			return false;
+		}
+		return true;
+	};
+
 	return (
 		<div style={{ textAlign: "left" }}>
 			<h1>Submit a Posting</h1>
@@ -324,16 +361,20 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 					setIsSpecific(val);
 				}}
 			/>
-			<TextArea
-				id="textbox_2"
-				label="How would you describe what happened? *"
-				value={happened}
-				handlers={{
-					onChange: (event: React.ChangeEvent<HTMLInputElement>) => {
-						setHappened(event.target.value);
-					},
-				}}
-			/>
+			{isSpecific === "yes" ? (
+				<TextArea
+					id="textbox_2"
+					label="How would you describe what happened? *"
+					value={happened}
+					handlers={{
+						onChange: (
+							event: React.ChangeEvent<HTMLInputElement>
+						) => {
+							setHappened(event.target.value);
+						},
+					}}
+				/>
+			) : null}
 			<TextBox
 				id="text_7"
 				value="When did this happen? *"
@@ -482,7 +523,10 @@ export const CreatePost: React.FC<CreatePostProps> = (props) => {
 					if (disableButton) {
 						return;
 					}
-					console.log(createPostEvent);
+					if (!satisfiesConstraints()) {
+						setDisableButton(false);
+						return;
+					}
 					if (createPostEvent) {
 						setDisableButton(true);
 						dispatchCreatePostEvent(createPostEvent)
