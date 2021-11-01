@@ -69,6 +69,10 @@ export const Base: React.FC<BaseProps> = (props) => {
 						</div>
 						<br />
 						<div style={{ textAlign: "left" }}>
+							<Link to="/">home</Link>
+						</div>
+						<br />
+						<div style={{ textAlign: "left" }}>
 							<Link to="/messages">messages</Link>
 						</div>
 						<br />
