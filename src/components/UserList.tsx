@@ -18,7 +18,13 @@ export const UserList: React.FC<UserListProps> = (props) => {
 		return null;
 	}
 	return (
-		<div style={{ minWidth: "15rem" }}>
+		<div
+			style={{
+				minWidth: "15rem",
+				maxHeight: "100vh - 8em",
+				overflowY: "auto",
+			}}
+		>
 			{/* <div>
 				<input
 					style={{
