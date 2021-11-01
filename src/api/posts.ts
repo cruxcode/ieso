@@ -102,3 +102,19 @@ export const getApprovedList = () => {
 			});
 	});
 };
+
+export const getApprovedPost = (postID: string) => {
+	return new Promise((res, rej) => {
+		fetch(
+			`${process.env.REACT_APP_BACKEND_ORIGIN_POST}/approved-post?postID=${postID}`
+		)
+			.then((resp) => resp.json())
+			.then((resp) => {
+				res(resp);
+			})
+			.catch((err) => {
+				console.log(err);
+				rej(err);
+			});
+	});
+};

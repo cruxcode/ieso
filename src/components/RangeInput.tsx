@@ -9,6 +9,7 @@ export interface RangeInputProps {
 	style?: React.CSSProperties;
 	min?: number;
 	max?: number;
+	disabled?: boolean;
 }
 
 export const RangeInput: React.FC<RangeInputProps> = (props) => {
@@ -33,6 +34,7 @@ export const RangeInput: React.FC<RangeInputProps> = (props) => {
 				max={props.max || 10}
 				defaultValue={props.value}
 				{...props.handlers}
+				disabled={props.disabled}
 			></input>
 		</div>
 	);

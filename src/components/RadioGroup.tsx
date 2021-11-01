@@ -9,6 +9,7 @@ export interface RadioGroupProps {
 	itemStyle?: React.CSSProperties;
 	style?: React.CSSProperties;
 	onChange?: (val: string) => void;
+	disabled?: boolean;
 }
 
 export const RadioGroup: React.FC<RadioGroupProps> = (props) => {
@@ -26,6 +27,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = (props) => {
 								if (props.onChange)
 									props.onChange(option.value);
 							}}
+							disabled={props.disabled}
 						/>
 						<label
 							htmlFor={option.id}

@@ -7,6 +7,7 @@ export interface TextAreaProps {
 	labelStyle?: React.CSSProperties;
 	style?: React.CSSProperties;
 	handlers?: any;
+	disabled?: boolean;
 }
 
 export const TextArea: React.FC<TextAreaProps> = (props) => {
@@ -34,6 +35,7 @@ export const TextArea: React.FC<TextAreaProps> = (props) => {
 				}}
 				value={def}
 				{...props.handlers}
+				disabled={props.disabled}
 			/>
 		</div>
 	);
