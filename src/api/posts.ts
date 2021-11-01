@@ -40,7 +40,7 @@ export const dispatchCreatePostEvent = (post: CreatePostEvent) => {
 		headers: headers,
 	};
 	return new Promise((res, rej) => {
-		fetch("http://localhost:4001", options)
+		fetch(`${process.env.REACT_APP_BACKEND_ORIGIN_POST}`, options)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
@@ -54,7 +54,9 @@ export const dispatchCreatePostEvent = (post: CreatePostEvent) => {
 
 export const getPost = (postID: string, token: string) => {
 	return new Promise((res, rej) => {
-		fetch(`http://localhost:4001?token=${token}&postID=${postID}`)
+		fetch(
+			`${process.env.REACT_APP_BACKEND_ORIGIN_POST}?token=${token}&postID=${postID}`
+		)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
@@ -75,7 +77,7 @@ export const castApproval = (postID: string, status: string, token: string) => {
 		headers: headers,
 	};
 	return new Promise((res, rej) => {
-		fetch("http://localhost:4001/approval", options)
+		fetch(`${process.env.REACT_APP_BACKEND_ORIGIN_POST}/approval`, options)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
@@ -89,7 +91,7 @@ export const castApproval = (postID: string, status: string, token: string) => {
 
 export const getApprovedList = () => {
 	return new Promise((res, rej) => {
-		fetch("http://localhost:4001/approved")
+		fetch(`${process.env.REACT_APP_BACKEND_ORIGIN_POST}/approved`)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);

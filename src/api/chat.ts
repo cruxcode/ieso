@@ -1,7 +1,7 @@
 export const getChats = (roomID: string, token: string) => {
 	return new Promise((res, rej) => {
 		fetch(
-			`http://localhost:4002/post-chats?roomID=${roomID}&token=${token}`
+			`${process.env.REACT_APP_BACKEND_ORIGIN_CHAT}/post-chats?roomID=${roomID}&token=${token}`
 		)
 			.then((resp) => resp.json())
 			.then((resp) => {
@@ -21,7 +21,7 @@ export const updateReadTime = (roomID: string, token: string) => {
 	};
 	return new Promise((res, rej) => {
 		fetch(
-			`http://localhost:4002/chat-read-activity?token=${token}&roomID=${roomID}`,
+			`${process.env.REACT_APP_BACKEND_ORIGIN_CHAT}/chat-read-activity?token=${token}&roomID=${roomID}`,
 			options
 		)
 			.then((resp) => resp.json())
@@ -34,7 +34,9 @@ export const updateReadTime = (roomID: string, token: string) => {
 
 export const getUnreadChatrooms = (token: string) => {
 	return new Promise<{ roomID: string }[]>((res, rej) => {
-		fetch(`http://localhost:4002/unread-activity?token=${token}`)
+		fetch(
+			`${process.env.REACT_APP_BACKEND_ORIGIN_CHAT}/unread-activity?token=${token}`
+		)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				if (resp.success) res(resp.unreads);

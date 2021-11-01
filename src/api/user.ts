@@ -9,7 +9,10 @@ export const usernameExists = (username: string) => {
 		headers: headers,
 	};
 	return new Promise((res, rej) => {
-		fetch("http://localhost:4000/user-exists", options)
+		fetch(
+			`${process.env.REACT_APP_BACKEND_ORIGIN_USER}/user-exists`,
+			options
+		)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
@@ -31,7 +34,7 @@ export const register = (
 		headers: headers,
 	};
 	return new Promise((res, rej) => {
-		fetch("http://localhost:4000/register", options)
+		fetch(`${process.env.REACT_APP_BACKEND_ORIGIN_USER}/register`, options)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
@@ -49,7 +52,7 @@ export const login = (username: string, password: string) => {
 		headers: headers,
 	};
 	return new Promise((res, rej) => {
-		fetch("http://localhost:4000/login", options)
+		fetch(`${process.env.REACT_APP_BACKEND_ORIGIN_USER}/login`, options)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
@@ -60,7 +63,9 @@ export const login = (username: string, password: string) => {
 
 export const getUserList = (token: string) => {
 	return new Promise((res, rej) => {
-		fetch(`http://localhost:4000/user-list?token=${token}`)
+		fetch(
+			`${process.env.REACT_APP_BACKEND_ORIGIN_USER}/user-list?token=${token}`
+		)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
@@ -71,7 +76,9 @@ export const getUserList = (token: string) => {
 
 export const getUserRole = (token: string) => {
 	return new Promise((res, rej) => {
-		fetch(`http://localhost:4000/role?token=${token}`)
+		fetch(
+			`${process.env.REACT_APP_BACKEND_ORIGIN_USER}/role?token=${token}`
+		)
 			.then((resp) => resp.json())
 			.then((resp) => {
 				res(resp);
